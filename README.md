@@ -8,7 +8,7 @@ Here is a visual representation of our technical approach:
 
 We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into concate_cdbg_output.py to concatenate them together. Then, we passed the concatenated string into FM-Index, HISAT-2 to build the FM-Index or hierarchical index. Then we ran the queries. For FM-Index, we first ran the queries in fmcount, and if the query count was 0 we removed it from the query list using remove_0_count.py. 
 
-#Libraries used:
+# Libraries used:
 Cuttlefish:
 https://bioconda.github.io/recipes/cuttlefish/README.html
 https://github.com/COMBINE-lab/cuttlefish#usage
