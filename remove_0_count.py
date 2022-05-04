@@ -1,4 +1,5 @@
-#reads in the output from fmcount function and determines if a query appears in the concated contigs from the de Bruijn Graph or not. If the query count is  >0 then we add it to the query output and if it's 0 then we remove it from the query. 
+#reads in the output from fmcount function and determines if a query appears in the concated contigs from the de Bruijn Graph or not. 
+#If the query count is  >0 then we add it to the query output and if it's 0 then we remove it from the query list. 
 
 string = ""
 
