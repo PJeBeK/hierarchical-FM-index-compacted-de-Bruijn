@@ -8,7 +8,7 @@ while True:
         line = input()
     except:
         break
-    if not S:
+    if not line:
         break
     
     number = line.split(" : ")[1]
