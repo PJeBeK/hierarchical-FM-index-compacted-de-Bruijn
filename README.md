@@ -1,3 +1,9 @@
+Description of repo layout (how is your repo organized, what lives in each folder?).
+How was your testing done, which scripts (or notebooks etc.) are responsible for your testing?
+What is the provenance of the data you used for testing — either pointers to scripts to download this data or detailed lists of the exact files you used and where they came from.
+Versions of the relevant software that you used in your project.
+
+
 # Hierarchical-FM-index-compacted-de-Bruijn
 We implemented the hierarchical FM-index, the traditional FM-Index and SSHash over the compacted de Bruijn graph and compared each of them. We tested our data using different kmer lengths and different reference strings to build the de Bruign Graph.
 
