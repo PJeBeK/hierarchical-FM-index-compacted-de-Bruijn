@@ -3,6 +3,8 @@ GENOME_REF=$1
 K=$2 # 31
 M=$3 # 13
 
+echo "Compile c++ codes"
+make
 echo "Running Cuttlefish"
 ./run_cuttlefish.sh $GENOME_REF $K
 echo "Genrating queries and building FM-Index to filter quries"

@@ -24,7 +24,11 @@ There are six scripts in the root directory of this project which run all the mo
 In these steps, we assume that there is a file named `ecoli.fa` in directory `data/` which is the Escherichia coli reference genome.
 You can replace `ecoli` with every name that your reference genome has. Just remember that it should be in the `data/`
 subdirectory and its format should be `.fa`.\
-First, you should run cuttlefish to generate a compacted version of reference genome using the following command:
+First, you should compile our c++ codes:
+
+    make
+
+Now, you should run cuttlefish to generate a compacted version of reference genome using the following command:
         
     ./run_cuttlefish.sh ecoli 31
 
