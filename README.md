@@ -7,6 +7,10 @@ Versions of the relevant software that you used in your project.
 # Hierarchical-FM-index-compacted-de-Bruijn
 We implemented the hierarchical FM-index, the traditional FM-Index and SSHash over the compacted de Bruijn graph and compared each of them. We tested our data using different kmer lengths and different reference strings to build the de Bruign Graph.
 
+# Repo layout 
+In the 
+
+
 Here is a visual representation of our technical approach:
 
 
@@ -17,19 +21,11 @@ We first passed the reference string into cuttlefish, took the unitig outputs fr
 # Requirements
 
 For running all module in this project you need to have gcc and python3.\
-Also, you need to download these projects and put them in root directory of this project:
-
-## Cuttlefish
-
-## FM-Index
-
-## HISAT2
-
-## SSHash
+Also, you need to download the cuttlefish, FM-Index, HISAT2 and SSHash projects from the [Libraries](#libraries-used) section and put them in root directory of this project.
 
 # Run codes
 
-There are six scripts in the root directory of this project which run all modules. We will introduce them step by step.
+There are six scripts in the root directory of this project which run all the modules. We will introduce them step by step.
 In these steps, we assume that there is a file named `ecoli.fa` in directory `data/` which is Escherichia coli reference genome.
 You can replace `ecoli` with every name that your reference genome has. Just remember that it should be in the `data/`
 subdirectory and its format should be `.fa`.\
