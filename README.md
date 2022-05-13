@@ -1,16 +1,15 @@
 Description of repo layout (how is your repo organized, what lives in each folder?).
 How was your testing done, which scripts (or notebooks etc.) are responsible for your testing?
 What is the provenance of the data you used for testing — either pointers to scripts to download this data or detailed lists of the exact files you used and where they came from.
-Versions of the relevant software that you used in your project.
 
 
 # Hierarchical-FM-index-compacted-de-Bruijn
-We implemented the hierarchical FM-index, the traditional FM-Index and SSHash over the compacted de Bruijn graph and compared each of them. We tested our data using different kmer lengths and different reference strings to build the de Bruign Graph.
+We implemented the hierarchical FM-index, the traditional FM-Index and SSHash over the compacted de Bruijn graph and compared each of them. We tested our data using different kmer lengths and different reference strings to build the de Bruijn Graph.
 
 # Repo layout 
-In the 
+In the src diretory, there is the helper code we wrote that takes the output from each library we used, transforms it if necessary, and passes it into the next library. These files are described in more detail in the [Technical Approach] (#technical-approach) section. In the root directory there are scripts which can be used to run the project, described in more detail in the [Run the code](#run-the-code) section. The ecoli reference genome that we used for one of our reference strings is in the data folder, and the rest of the data that we used as our reference strings is linked in the [Data used](#data-used) section.
 
-
+# Technical Approach
 Here is a visual representation of our technical approach:
 
 
@@ -23,13 +22,13 @@ We first passed the reference string into cuttlefish, took the unitig outputs fr
 For running all module in this project you need to have gcc and python3.\
 Also, you need to download the cuttlefish, FM-Index, HISAT2 and SSHash projects from the [Libraries](#libraries-used) section and put them in root directory of this project.
 
-# Run codes
+# Run the code
 
 There are six scripts in the root directory of this project which run all the modules. We will introduce them step by step.
-In these steps, we assume that there is a file named `ecoli.fa` in directory `data/` which is Escherichia coli reference genome.
+In these steps, we assume that there is a file named `ecoli.fa` in directory `data/` which is the Escherichia coli reference genome.
 You can replace `ecoli` with every name that your reference genome has. Just remember that it should be in the `data/`
 subdirectory and its format should be `.fa`.\
-First, you should run cuttlefish to generate a compacted version of reference genome:
+First, you should run cuttlefish to generate a compacted version of reference genome using the following command:
         
     ./run_cuttlefish.sh ecoli 31
 
