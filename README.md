@@ -14,16 +14,58 @@ Here is a visual representation of our technical approach:
 
 We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into [concate_cdbg_output.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/concate_cdbg_output.py) to concatenate them together. We passed the concatenated string into FM-Index, HISAT-2 to build the FM-Index or hierarchical index. Then we ran the queries. For FM-Index, we first ran the queries in fmcount, and if the query count was 0 we removed it from the query list using [remove_0_count.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/remove_0_count.py) before running the parsed queries through fmlocate. 
 
-# Libraries used:
-Cuttlefish:
+# Requirements
+
+For running all module in this project you need to have gcc and python3.\
+Also, you need to download these projects and put them in root directory of this project:
+
+## Cuttlefish
+
+## FM-Index
+
+## HISAT2
+
+## SSHash
+
+# Run codes
+
+There are six scripts in root directory of this project which run all modules. We will introduce them step by step.
+In these steps, we assume that there is a file named `first.fa` in directory `data/` which is the first chromosom of human.
+You can replace `first` with every name that your reference genome has. Just remember that it should be in the `data/`
+and its format should be `.fa`.\
+First, you should run cuttlefish to generate a compacted version of reference genome:
+        
+    ./run_cuttlefish.sh first 31
+
+Then, you generate queries and run fmcount of FM-Index to filter queries without occurrences in unitigs:
+
+    ./generate_queries.sh first
+
+Finally, you can build HISAT2 and SSHash indexes and run filtered queries on all three algorithms:
+
+    ./run_fm-index.sh first
+    ./run_hisat2.sh first
+    ./run_sshash.sh first 31 13
+
+Also, you can run all above commands in only one command:
+
+    ./run_all.sh first 31 13
+
+
+# Data used
+Human genome and chromosomes:\
+https://www.ncbi.nlm.nih.gov/genome/?term=txid9606
+
+# Libraries used
+Cuttlefish:\
 https://bioconda.github.io/recipes/cuttlefish/README.html
 https://github.com/COMBINE-lab/cuttlefish#usage
  
-FM-Index:
+FM-Index:\
 https://github.com/mpetri/FM-Index
  
-Hierarchical FM-Index: 
+Hierarchical FM-Index:\
 https://github.com/DaehwanKimLab/hisat2
  
-SSHash: 
+SSHash:\
 https://github.com/jermp/sshash
