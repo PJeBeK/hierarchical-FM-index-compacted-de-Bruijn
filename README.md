@@ -29,27 +29,27 @@ Also, you need to download these projects and put them in root directory of this
 
 # Run codes
 
-There are six scripts in root directory of this project which run all modules. We will introduce them step by step.
-In these steps, we assume that there is a file named `first.fa` in directory `data/` which is the first chromosom of human.
-You can replace `first` with every name that your reference genome has. Just remember that it should be in the `data/`
-and its format should be `.fa`.\
+There are six scripts in the root directory of this project which run all modules. We will introduce them step by step.
+In these steps, we assume that there is a file named `ecoli.fa` in directory `data/` which is Escherichia coli reference genome.
+You can replace `ecoli` with every name that your reference genome has. Just remember that it should be in the `data/`
+subdirectory and its format should be `.fa`.\
 First, you should run cuttlefish to generate a compacted version of reference genome:
         
-    ./run_cuttlefish.sh first 31
+    ./run_cuttlefish.sh ecoli 31
 
 Then, you generate queries and run fmcount of FM-Index to filter queries without occurrences in unitigs:
 
-    ./generate_queries.sh first
+    ./generate_queries.sh ecoli
 
 Finally, you can build HISAT2 and SSHash indexes and run filtered queries on all three algorithms:
 
-    ./run_fm-index.sh first
-    ./run_hisat2.sh first
-    ./run_sshash.sh first 31 13
+    ./run_fm-index.sh ecoli
+    ./run_hisat2.sh ecoli
+    ./run_sshash.sh ecoli 31 13
 
 Also, you can run all above commands in only one command:
 
-    ./run_all.sh first 31 13
+    ./run_all.sh ecoli 31 13
 
 
 # Data used
