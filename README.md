@@ -1,13 +1,9 @@
-Description of repo layout (how is your repo organized, what lives in each folder?).
-How was your testing done, which scripts (or notebooks etc.) are responsible for your testing?
-What is the provenance of the data you used for testing — either pointers to scripts to download this data or detailed lists of the exact files you used and where they came from.
-
 
 # Hierarchical-FM-index-compacted-de-Bruijn
 We implemented the hierarchical FM-index, the traditional FM-Index and SSHash over the compacted de Bruijn graph and compared each of them. We tested our data using different kmer lengths and different reference strings to build the de Bruijn Graph.
 
 # Repo layout 
-In the src diretory, there is the helper code we wrote that takes the output from each library we used, transforms it if necessary, and passes it into the next library. These files are described in more detail in the [Technical Approach] (#technical-approach) section. In the root directory there are scripts which can be used to run the project, described in more detail in the [Run the code](#run-the-code) section. The ecoli reference genome that we used for one of our reference strings is in the data folder, and the rest of the data that we used as our reference strings is linked in the [Data used](#data-used) section.
+In the src directory, there is the helper code we wrote that takes the output from each library we used, transforms it if necessary, and passes it into the next library. These files are described in more detail in the [Technical Approach](#technical-approach) section. In the root directory there are scripts which can be used to run the project, described in more detail in the [Run the code](#run-the-code) section. The ecoli reference genome that we used for one of our reference strings is in the data folder, and the rest of the data that we used as our reference strings is linked in the [Data used](#data-used) section.
 
 # Technical Approach
 Here is a visual representation of our technical approach:
@@ -15,7 +11,7 @@ Here is a visual representation of our technical approach:
 
 ![Screen Shot 2022-05-04 at 2 55 09 PM](https://user-images.githubusercontent.com/43825734/166806155-3dc58aee-8e80-41dc-a1b2-aaaebc6998c9.png)
 
-We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into [concate_cdbg_output.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/concate_cdbg_output.py) to concatenate them together. We passed the concatenated string into FM-Index, HISAT-2 to build the FM-Index or hierarchical index. Then we ran the queries. For FM-Index, we first ran the queries in fmcount, and if the query count was 0 we removed it from the query list using [remove_0_count.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/remove_0_count.py) before running the parsed queries through fmlocate. 
+We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into [concate_cdbg_output.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/concate_cdbg_output.py) to concatenate them together. We passed the concatenated string into FM-Index to build the index. The hierarchical FM_index takes in a FASTA file to build the index, so we turned the concatenated string into one with [make_file_fasta.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/make_file_fasta.py) and then built the index.   For SSHash we also passed in the FASTA file format of the concatenated string. To generate a list of queries we ran [generate_queries.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/generate_queries.py) on the concatenated string. For FM-Index, we first ran the queries in fmcount, and if the query count was 0 we removed it from the query list using [remove_0_count.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/remove_0_count.py) before running the parsed queries through fmlocate. For HISAT2 and SSHash there was only one query function that we ran. 
 
 # Requirements
 
