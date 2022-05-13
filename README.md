@@ -49,7 +49,7 @@ https://www.ncbi.nlm.nih.gov/genome/?term=txid9606
 
 # Libraries used
 Cuttlefish:\
-https://bioconda.github.io/recipes/cuttlefish/README.html
+https://bioconda.github.io/recipes/cuttlefish/README.html \
 https://github.com/COMBINE-lab/cuttlefish#usage
  
 FM-Index:\
@@ -59,4 +59,5 @@ Hierarchical FM-Index:\
 https://github.com/DaehwanKimLab/hisat2
  
 SSHash:\
+https://daehwankimlab.github.io/hisat2/download/#version-hisat2-221 \
 https://github.com/jermp/sshash
