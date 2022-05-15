@@ -11,15 +11,15 @@ Here is a visual representation of our technical approach:
 
 ![Screen Shot 2022-05-04 at 2 55 09 PM](https://user-images.githubusercontent.com/43825734/166806155-3dc58aee-8e80-41dc-a1b2-aaaebc6998c9.png)
 
-We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into [concate_cdbg_output.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/concate_cdbg_output.py) to concatenate them together. We passed the concatenated string into FM-Index to build the index. The hierarchical FM_index takes in a FASTA file to build the index, so we turned the concatenated string into one with [make_file_fasta.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/make_file_fasta.py) and then built the index.   For SSHash we also passed in the FASTA file format of the concatenated string. To generate a list of queries 
+We first passed the reference string into cuttlefish, took the unitig outputs from cuttlefish,  and passed them into [concate_cdbg_output.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/concate_cdbg_output.py) to concatenate them together. We passed the concatenated string into FM-Index to build the index. The hierarchical FM_index takes in a FASTA file to build the index, so we turned the concatenated string into one with [make_file_fasta.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/make_file_fasta.py) and then built the index.   For SSHash we also passed in the FASTA file format of the concatenated string. To generate a list of queries 
 we ran [generate_queries.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/generate_queries.py) on the concatenated string. 
 For FM-Index, we first ran the queries in fmcount, and if the query count was 0 we removed it from the query list 
-using [remove_0_count.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/remove_0_count.py) before running the parsed queries through fmlocate. 
-For HISAT2 and SSHash there was only one query function that we ran. After getting the output from the FM-Index and HISAT2 we implemented rank and select in [rank_select.h](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/rank_select.h) 
+using [remove_0_count.py](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/remove_0_count.py) before running the parsed queries through fmlocate. 
+For HISAT2 and SSHash there was only one query function that we ran. After getting the output from the FM-Index and HISAT2 we implemented rank and select in [rank_select.h](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/rank_select.h) 
 and used it in
-[rank_select_fm-index.cpp](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/rank_select_fm-index.cpp)
+[rank_select_fm-index.cpp](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/rank_select_fm-index.cpp)
 and 
-[rank_select_hisat2.cpp](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/rank_select_hisat2.cpp)
+[rank_select_hisat2.cpp](https://github.com/PJeBeK/hierarchical-FM-index-compacted-de-Bruijn/blob/main/src/rank_select_hisat2.cpp)
 to get the unitig id and relative position of each query for both algorithms.
 
 # Requirements
